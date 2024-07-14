@@ -171,3 +171,98 @@ Explanation:
 Base Case: If n is 0, return 0.
 Formula: The formula computes the sum in constant time without recursion.
 Type Safety: Using static_cast<long long>(n) ensures that the multiplication does not overflow for larger values of n.
+
+
+Q13. Reverse an array using 2 pointers.
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+void reverse(int arr[],int l,int r){
+    //base condition
+    if(l>=r)
+        return;
+        
+    swap(l,r);
+    
+    reverse(arr,l+1,r-1);
+}
+
+int main(){
+    int arr[]={5,3,6,2,4};
+    int n=5;
+    reverse(arr,0,n-1);
+    
+    for(int i=0;i<5;i++) 
+        cout<<arr[i]<<" ";
+    
+    return 0;
+}
+
+
+Q13. Reverse an array using a single pointer.
+
+void reverse(int arr[],int i,int n){
+    //base condition
+    if(i>=n/2)
+        return;
+    
+    swap(arr[i],arr[n-1-i]);
+    reverse(arr,i+1,n);
+    
+}
+
+int main(){
+    int arr[]={5,3,6,2,4};
+    int n=5;
+    reverse(arr,0,n);
+    
+    for(int i=0;i<5;i++) 
+        cout<<arr[i]<<" ";
+    
+    return 0;
+}
+
+
+Q14. Pallindrome(using recursion).
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+bool pallindrome(int i,string &str){
+    if(i>=str.size()/2)
+        return true;
+    if(str[i]!=str[str.size()-1-i])
+        return false;
+        
+    return pallindrome(i+1,str);
+}
+
+int main(){
+    string s="MADAM";
+    
+    cout<<pallindrome(0,s);
+    
+    return 0;
+}
+
+
+# Multiple recursion calls.
+
+Q. Fibonacci. (TC: O(2^n))
+
+int fib(int n){
+    if(n<=1)
+        return n;
+        
+    return fib(n-1)+fib(n-2);
+}
+
+int main(){
+    cout<<fib(4);
+    
+    return 0;
+}
