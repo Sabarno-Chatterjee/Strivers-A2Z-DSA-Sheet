@@ -1,3 +1,6 @@
+//Time Complexity: O(NlogN)
+//Space Complexity: O(N) Since we are creating a temp array while merging.
+
 #include<bits/stdc++.h>
 
 using namespace std;
