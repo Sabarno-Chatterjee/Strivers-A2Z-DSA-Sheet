@@ -1,0 +1,169 @@
+# Number based hashing
+
+//Sample input:
+// 5
+// 1 3 2 1 3
+// 5
+// 1
+// 4 
+// 2 
+// 3 
+// 12
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++) 
+        cin>>arr[i];
+    
+    //precompute
+    int hash[13]={0};
+    for(int i=0;i<n;i++){
+        hash[arr[i]]++;
+    }
+    
+    int q;
+    cin>>q;
+    while(q--){
+        int number;
+        cin>>number;
+        cout<<number<<" : "<<hash[number]<<endl;
+    }
+    
+    return 0;
+}
+
+* Case when larger storage is required(>10^7)
+Here, we opt for maps instead of arrays.
+
+//Sample input:
+//asdasfhjnas
+//5
+//a
+//b 
+//j 
+//y 
+//c 
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    
+    int arr[n];
+    
+    for(int i=0;i<n;i++)
+        cin>>arr[i];
+    
+    //pre computation
+    map<int,int> mpp;
+    for(int i=0;i<n;i++){
+        mpp[arr[i]]++;
+    }
+    
+    //iterate through map
+    for(auto it:mpp){
+        cout<<it.first<<" -> "<<it.second<<endl;
+    }
+    
+    
+    int q;
+    cin>>q;
+    
+    while(q--){
+        int num;
+        cin>>num;
+        cout<<num<<" : "<<mpp[num]<<endl;
+    }
+    
+    return 0;
+}
+
+# Character Hashing
+
+-> In case we want to use map instead of array. map<char,int> mpp
+
+*Only small case
+
+//Sample input:
+//asdasfhjnas
+//5
+//a
+//b 
+//j 
+//y 
+//c 
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    string str;
+    cin>>str;
+    
+    //pre computation
+    int hash[26]={0};
+    
+    for(int i=0;i<str.size();i++){
+        hash[str[i] -'a']++;
+    }
+    
+    
+    int q;
+    cin>>q;
+    while(q--){
+        char c;
+        cin>>c;
+        cout<<c<<" : "<<hash[c-'a']<<endl;
+    }
+    
+    return 0;
+}
+
+
+* All characters
+
+//Sample input:
+//asdaHGJHnas
+//5
+//a
+//b 
+//J
+//y 
+//c 
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    string str;
+    cin>>str;
+    
+    //pre computation
+    int hash[256]={0};
+    
+    for(int i=0;i<str.size();i++){
+        hash[str[i]]++;
+    }
+    
+    
+    int q;
+    cin>>q;
+    while(q--){
+        char c;
+        cin>>c;
+        cout<<c<<" : "<<hash[c]<<endl;
+    }
+    
+    return 0;
+}
