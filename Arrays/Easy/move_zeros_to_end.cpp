@@ -59,6 +59,9 @@ void moveZero(int arr[],int n){
             break;
         }
     }
+
+    // Handling exceptions
+    if(j==-1) return;
     
     // Step 2: Locating non-zeros and swapping
     // TC: O(n-x)
